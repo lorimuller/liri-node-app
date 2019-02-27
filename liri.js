@@ -76,7 +76,7 @@ function showMovie(inputs) {
 
     request(queryUrl, function (error, response, body) {
 
-        console.log("body ", body);
+        // console.log("body ", body);
 
         if (!error && response.statusCode === 200) {
 
@@ -105,7 +105,7 @@ function bandInT(inputs) {
         if (inputs <= 1) {
             console.log("Sorry! " + inputs + " isn't playing right now. Choose again.");
         }
-        
+
         if (!error && response.statusCode === 200) {
 
             // console.log("this is a response", body[1]);
