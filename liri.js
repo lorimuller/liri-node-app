@@ -76,13 +76,15 @@ function showMovie(inputs) {
 
     request(queryUrl, function (error, response, body) {
 
+        console.log("body ", body);
+
         if (!error && response.statusCode === 200) {
 
             console.log("------------------------------------");
             console.log("Title: " + JSON.parse(body).Title);
             console.log("Release Year: " + JSON.parse(body).Year);
             console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
-            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Source[1]);
             console.log("Country: " + JSON.parse(body).Country);
             console.log("Language: " + JSON.parse(body).Language);
             console.log("Plot: " + JSON.parse(body).Plot);
@@ -96,19 +98,20 @@ function showMovie(inputs) {
 function bandInT(inputs) {
     request("https://rest.bandsintown.com/artists/" + inputs + "/events?app_id=codingbootcamp", function (error, response, body) {
 
-        if (inputs <= 1) {
-            console.log("Sorry! " + inputs + " isn't playing right now. Choose again.");
-        }
-
         if (inputs === undefined) {
             console.log("Please input a band.");
         }
+
+        if (inputs <= 1) {
+            console.log("Sorry! " + inputs + " isn't playing right now. Choose again.");
+        }
+        
         if (!error && response.statusCode === 200) {
 
             // console.log("this is a response", body[1]);
             var data = JSON.parse(body);
             // console.log(Array.isArray(JSON.parse(body)) );
-            console.log(data[0]);
+            // console.log(data[0]);
 
             // var count = 0;
             // for (var i = data.length - 1; i > 0; i--) {
